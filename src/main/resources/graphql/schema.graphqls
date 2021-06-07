@@ -1,0 +1,65 @@
+schema {
+    query: Query,
+    mutation: Mutation,
+    
+}
+
+type Query{
+    # Fetch All Users
+    getAllUsers:[User]
+
+}
+type Query{
+    # Fetch All Posts
+    getAllPosts:[Post]
+
+}
+
+input PostInput {
+    postName :String,
+    dateCreated :String,
+}
+
+type Post {
+    postId : ID!,
+    postName :String!,
+    dateCreated :String!,
+}
+
+input UserInput {
+    
+    firstName :String,
+    lastName :String,
+    dob:String,
+    address:String,
+    postId : Int,
+}
+
+
+type User {
+    userId : ID!,
+    firstName :String,
+    lastName :String,
+    dob:String,
+    address:String,
+    postId : Int,
+}
+
+type Mutation {
+	# Create the user
+        createUser(input: UserInput) : User
+}
+
+
+type Mutation {
+    # Update the user address
+    updateUserAddress(userId:Int,address:String): User
+}
+
+
+type Mutation {
+	# Create the Post
+        createPost(input: PostInput) : Post
+}
+
+
