@@ -1,18 +1,13 @@
 schema {
     query: Query,
     mutation: Mutation,
-    
 }
 
-type Query{
-    # Fetch All Users
-    getAllUsers:[User]
-
-}
 type Query{
     # Fetch All Posts
     getAllPosts:[Post]
-
+    # Fetch All Users
+    getAllUsers:[User]
 }
 
 input PostInput {
@@ -27,7 +22,6 @@ type Post {
 }
 
 input UserInput {
-    
     firstName :String,
     lastName :String,
     dob:String,
@@ -45,21 +39,12 @@ type User {
     postId : Int,
 }
 
-type Mutation {
-	# Create the user
-        createUser(input: UserInput) : User
-}
-
 
 type Mutation {
+    # Create the Post
+    createPost(input: PostInput) : Post
     # Update the user address
     updateUserAddress(userId:Int,address:String): User
+    # Create the user
+    createUser(input: UserInput) : User
 }
-
-
-type Mutation {
-	# Create the Post
-        createPost(input: PostInput) : Post
-}
-
-
